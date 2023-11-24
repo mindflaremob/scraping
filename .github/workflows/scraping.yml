@@ -1,0 +1,15 @@
+name: scraping
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scraping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run
+        env:
+          SCRAPING: ${{ secrets.SCRAPING }}
+        run: |
+          git clone $SCRAPING scraping
+          (cd scraping/; bash run.sh)
